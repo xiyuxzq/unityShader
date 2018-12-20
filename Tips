@@ -15,3 +15,19 @@ fixed — 10位定点格式，适合色彩、照明计算和其它高性能操�
 
 4.大部分shader都有_Color属性，但如果你并没有使用，那么就应该去掉，避免无谓的计算。
 5.通用的表面着色器虽然通用，但性能其实并不好
+
+[NoScaleOffset]  用来隐藏贴图印射的缩放和偏移计算，代码依然可以操作
+
+ForceNoShadowCasting   true表示不受其它物体投掷阴影影响    false表示受别物体投掷阴影影响
+
+#pragma multi_compile __R
+#pragma multi_compile __G
+#pragma multi_compile __B
+
+消耗十分大的一种写法，它将生成所有组合类的变体，就是2*2*2种，这极大的增加了负担。
+
+#pragma shader_featre __R
+#pragma shader_featre __G
+#pragma shader_featre __B
+
+通常只生成自己，但是实际上容易不生成变体
